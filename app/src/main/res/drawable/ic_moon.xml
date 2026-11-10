@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Мягкий полумесяц. Холст обрезан по контуру фигуры (без полей),
+     чтобы иконку можно было точно выравнивать по тексту. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="86"
+    android:viewportHeight="86">
+    <group
+        android:translateX="-7"
+        android:translateY="-7">
+        <path
+            android:fillColor="#F9A75C"
+            android:strokeColor="#F9A75C"
+            android:strokeWidth="6"
+            android:strokeLineJoin="round"
+            android:pathData="M42.49,10.72 A40,40 0 1,1 10.41,55.64 A30,30 0 1,0 42.49,10.72 Z" />
+    </group>
+</vector>

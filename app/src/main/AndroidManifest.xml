@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Разрешение рисовать поверх других приложений. -->
+    <uses-permission
+        android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- Разрешение запускать foreground service. -->
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <!-- Специальный тип сервиса для Android 14+. -->
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <!-- Разрешение показывать уведомления на Android 13+. -->
+    <uses-permission
+        android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Узнать о перезагрузке телефона, чтобы снова поставить таймер. -->
+    <uses-permission
+        android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- Точные будильники для таймера (Android 12+).
+         Пользователь выдаёт его в настройках "Будильники и напоминания". -->
+    <uses-permission
+        android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MidnightLight">
+
+        <!-- Регистрируем наш сервис в системе Android. -->
+        <service
+            android:name=".NightFilterService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+
+            <!-- Объяснение назначения сервиса. -->
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="User-controlled persistent screen color filter" />
+        </service>
+
+        <!-- Срабатывание будильников таймера (старт / финиш). -->
+        <receiver
+            android:name=".TimerAlarmReceiver"
+            android:exported="false" />
+
+        <!-- Системные события: перезагрузка, смена времени и пояса,
+             обновление приложения, выдача разрешения на будильники. -->
+        <receiver
+            android:name=".SystemEventsReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MidnightLight"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
