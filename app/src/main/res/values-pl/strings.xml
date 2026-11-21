@@ -25,4 +25,10 @@
     <string name="background_hint">Na niektórych urządzeniach Midnight potrzebuje uprawnienia do uruchamiania w tle, aby przywrócić harmonogram po ponownym uruchomieniu telefonu.\n\nWłącz je w ustawieniach aplikacji w telefonie.</string>
     <string name="ok">OK</string>
     <string name="cancel">Anuluj</string>
+
+    <!-- Окно перед настройками "Поверх других приложений" -->
+    <string name="overlay_permission_title">Zezwól na wyświetlanie nad innymi aplikacjami</string>
+    <string name="overlay_permission_list">Aby wyświetlać filtr nad innymi aplikacjami, Midnight potrzebuje uprawnienia.\n\nNa następnym ekranie znajdź Midnight na liście i włącz przełącznik.</string>
+    <string name="overlay_permission_page">Aby wyświetlać filtr nad innymi aplikacjami, Midnight potrzebuje uprawnienia.\n\nNa następnym ekranie włącz przełącznik.</string>
+    <string name="got_it">Rozumiem</string>
 </resources>

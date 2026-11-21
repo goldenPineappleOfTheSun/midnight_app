@@ -25,4 +25,10 @@
     <string name="background_hint">Trên một số thiết bị, Midnight cần quyền khởi động trong nền để khôi phục hẹn giờ sau khi điện thoại khởi động lại.\n\nHãy bật quyền này trong phần cài đặt ứng dụng trên điện thoại.</string>
     <string name="ok">OK</string>
     <string name="cancel">Hủy</string>
+
+    <!-- Окно перед настройками "Поверх других приложений" -->
+    <string name="overlay_permission_title">Cho phép hiển thị trên ứng dụng khác</string>
+    <string name="overlay_permission_list">Để hiển thị bộ lọc trên các ứng dụng khác, Midnight cần được cấp quyền.\n\nỞ màn hình tiếp theo, hãy tìm Midnight trong danh sách và bật công tắc.</string>
+    <string name="overlay_permission_page">Để hiển thị bộ lọc trên các ứng dụng khác, Midnight cần được cấp quyền.\n\nỞ màn hình tiếp theo, hãy bật công tắc.</string>
+    <string name="got_it">Đã hiểu</string>
 </resources>

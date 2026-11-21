@@ -25,4 +25,10 @@
     <string name="background_hint">На деяких пристроях Midnight потрібен дозвіл на запуск у фоні, щоб відновити таймер після перезавантаження.\n\nУвімкніть його в налаштуваннях застосунку на телефоні.</string>
     <string name="ok">OK</string>
     <string name="cancel">Скасувати</string>
+
+    <!-- Окно перед настройками "Поверх других приложений" -->
+    <string name="overlay_permission_title">Дозвольте показ поверх інших застосунків</string>
+    <string name="overlay_permission_list">Щоб показувати фільтр поверх інших застосунків, Midnight потрібен дозвіл.\n\nНа наступному екрані знайдіть Midnight у списку й увімкніть перемикач.</string>
+    <string name="overlay_permission_page">Щоб показувати фільтр поверх інших застосунків, Midnight потрібен дозвіл.\n\nНа наступному екрані увімкніть перемикач.</string>
+    <string name="got_it">Зрозуміло</string>
 </resources>

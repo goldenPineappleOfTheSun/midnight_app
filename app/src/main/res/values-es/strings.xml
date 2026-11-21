@@ -25,4 +25,10 @@
     <string name="background_hint">En algunos dispositivos, Midnight necesita permiso para iniciarse en segundo plano y así restaurar el temporizador después de reiniciar el teléfono.\n\nActívalo en los ajustes de la aplicación de tu teléfono.</string>
     <string name="ok">Aceptar</string>
     <string name="cancel">Cancelar</string>
+
+    <!-- Окно перед настройками "Поверх других приложений" -->
+    <string name="overlay_permission_title">Permitir mostrar sobre otras aplicaciones</string>
+    <string name="overlay_permission_list">Para mostrar el filtro sobre otras aplicaciones, Midnight necesita un permiso.\n\nEn la siguiente pantalla, busca Midnight en la lista y activa el interruptor.</string>
+    <string name="overlay_permission_page">Para mostrar el filtro sobre otras aplicaciones, Midnight necesita un permiso.\n\nEn la siguiente pantalla, activa el interruptor.</string>
+    <string name="got_it">Entendido</string>
 </resources>

@@ -25,4 +25,10 @@
     <string name="background_hint">Em alguns aparelhos, o Midnight precisa de permissão para iniciar em segundo plano e restaurar o timer depois que o celular é reiniciado.\n\nAtive essa permissão nas configurações do app no seu celular.</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancelar</string>
+
+    <!-- Окно перед настройками "Поверх других приложений" -->
+    <string name="overlay_permission_title">Permitir sobreposição a outros apps</string>
+    <string name="overlay_permission_list">Para mostrar o filtro sobre outros apps, o Midnight precisa de uma permissão.\n\nNa próxima tela, encontre o Midnight na lista e ative a chave.</string>
+    <string name="overlay_permission_page">Para mostrar o filtro sobre outros apps, o Midnight precisa de uma permissão.\n\nNa próxima tela, ative a chave.</string>
+    <string name="got_it">Entendi</string>
 </resources>

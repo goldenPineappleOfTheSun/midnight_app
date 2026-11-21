@@ -25,4 +25,10 @@
     <string name="background_hint">Su alcuni dispositivi, Midnight ha bisogno dell\'autorizzazione all\'avvio in background per ripristinare il timer dopo un riavvio.\n\nAttivala nelle impostazioni dell\'app sul telefono.</string>
     <string name="ok">OK</string>
     <string name="cancel">Annulla</string>
+
+    <!-- Окно перед настройками "Поверх других приложений" -->
+    <string name="overlay_permission_title">Consenti la visualizzazione sopra altre app</string>
+    <string name="overlay_permission_list">Per mostrare il filtro sopra le altre app, Midnight ha bisogno di un\'autorizzazione.\n\nNella schermata successiva, trova Midnight nell\'elenco e attiva l\'interruttore.</string>
+    <string name="overlay_permission_page">Per mostrare il filtro sopra le altre app, Midnight ha bisogno di un\'autorizzazione.\n\nNella schermata successiva, attiva l\'interruttore.</string>
+    <string name="got_it">Ho capito</string>
 </resources>

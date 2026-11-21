@@ -25,4 +25,10 @@
     <string name="background_hint">在部分裝置上，Midnight 需要背景啟動權限，才能在重新開機後恢復定時。\n\n請在手機的應用程式設定中開啟此權限。</string>
     <string name="ok">確定</string>
     <string name="cancel">取消</string>
+
+    <!-- Окно перед настройками "Поверх других приложений" -->
+    <string name="overlay_permission_title">允許顯示在其他應用程式上層</string>
+    <string name="overlay_permission_list">Midnight 需要權限才能在其他應用程式上層顯示濾鏡。\n\n在下一個畫面中，從清單找到 Midnight 並開啟開關。</string>
+    <string name="overlay_permission_page">Midnight 需要權限才能在其他應用程式上層顯示濾鏡。\n\n在下一個畫面中，開啟開關。</string>
+    <string name="got_it">知道了</string>
 </resources>

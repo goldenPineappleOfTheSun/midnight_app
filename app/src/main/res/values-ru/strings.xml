@@ -25,4 +25,10 @@
     <string name="background_hint">На некоторых устройствах Midnight нужно разрешение на запуск в фоне, чтобы восстановить таймер после перезагрузки.\n\nВключите его в настройках приложения на телефоне.</string>
     <string name="ok">OK</string>
     <string name="cancel">Отмена</string>
+
+    <!-- Окно перед настройками "Поверх других приложений" -->
+    <string name="overlay_permission_title">Разрешите показ поверх других приложений</string>
+    <string name="overlay_permission_list">Чтобы показывать фильтр поверх других приложений, Midnight нужно разрешение.\n\nНа следующем экране найдите Midnight в списке и включите переключатель.</string>
+    <string name="overlay_permission_page">Чтобы показывать фильтр поверх других приложений, Midnight нужно разрешение.\n\nНа следующем экране включите переключатель.</string>
+    <string name="got_it">Понятно</string>
 </resources>

@@ -68,12 +68,21 @@ fun TimerScreen(onBack: () -> Unit) {
         TimerScheduler.reschedule(context)
     }
 
-    fun openOverlaySettings() {
-        context.startActivity(
-            Intent(
-                Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                Uri.parse("package:${context.packageName}")
-            )
+    // Окно с объяснением перед переходом в настройки
+    // "Поверх других приложений".
+    var showPermissionDialog by remember { mutableStateOf(false) }
+
+    fun askOverlayPermission() {
+        showPermissionDialog = true
+    }
+
+    if (showPermissionDialog) {
+        OverlayPermissionDialog(
+            onConfirm = {
+                showPermissionDialog = false
+                openOverlaySettings(context)
+            },
+            onDismiss = { showPermissionDialog = false }
         )
     }
 
@@ -192,7 +201,7 @@ fun TimerScreen(onBack: () -> Unit) {
                     if (enabled) {
                         // Без разрешений сразу ведём в настройки.
                         when {
-                            !canOverlay -> openOverlaySettings()
+                            !canOverlay -> askOverlayPermission()
                             !canExact -> openAlarmSettings()
                             // Если таймер включили посреди ночи —
                             // включаем фильтр сразу.
@@ -224,7 +233,7 @@ fun TimerScreen(onBack: () -> Unit) {
                 PermissionWarning(
                     text = stringResource(R.string.overlay_warning),
                     button = stringResource(R.string.open_settings),
-                    onClick = ::openOverlaySettings
+                    onClick = ::askOverlayPermission
                 )
             } else if (enabled && !canExact) {
                 PermissionWarning(

@@ -25,4 +25,10 @@
     <string name="background_hint">在部分设备上，Midnight 需要后台启动权限，才能在重启后恢复定时。\n\n请在手机的应用设置中开启此权限。</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
+
+    <!-- Окно перед настройками "Поверх других приложений" -->
+    <string name="overlay_permission_title">允许显示在其他应用的上层</string>
+    <string name="overlay_permission_list">Midnight 需要权限才能在其他应用的上层显示滤镜。\n\n在下一个界面中，从列表里找到 Midnight 并打开开关。</string>
+    <string name="overlay_permission_page">Midnight 需要权限才能在其他应用的上层显示滤镜。\n\n在下一个界面中，打开开关。</string>
+    <string name="got_it">知道了</string>
 </resources>

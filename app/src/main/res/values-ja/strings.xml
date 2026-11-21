@@ -25,4 +25,10 @@
     <string name="background_hint">一部の端末では、再起動後にタイマーを復元するために、Midnight のバックグラウンド起動の許可が必要です。\n\nスマートフォンのアプリ設定で有効にしてください。</string>
     <string name="ok">OK</string>
     <string name="cancel">キャンセル</string>
+
+    <!-- Окно перед настройками "Поверх других приложений" -->
+    <string name="overlay_permission_title">他のアプリの上に重ねて表示を許可</string>
+    <string name="overlay_permission_list">他のアプリの上にフィルターを表示するには、Midnight に許可が必要です。\n\n次の画面で、リストから Midnight を探してスイッチをオンにしてください。</string>
+    <string name="overlay_permission_page">他のアプリの上にフィルターを表示するには、Midnight に許可が必要です。\n\n次の画面で、スイッチをオンにしてください。</string>
+    <string name="got_it">わかりました</string>
 </resources>

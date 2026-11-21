@@ -25,4 +25,10 @@
     <string name="background_hint">Bazı cihazlarda Midnight\'ın, telefon yeniden başlatıldıktan sonra zamanlayıcıyı geri yükleyebilmesi için arka planda başlatma iznine ihtiyacı vardır.\n\nBu izni telefonunuzun uygulama ayarlarından açın.</string>
     <string name="ok">Tamam</string>
     <string name="cancel">İptal</string>
+
+    <!-- Окно перед настройками "Поверх других приложений" -->
+    <string name="overlay_permission_title">Diğer uygulamaların üzerinde gösterime izin verin</string>
+    <string name="overlay_permission_list">Filtreyi diğer uygulamaların üzerinde gösterebilmek için Midnight\'ın izne ihtiyacı var.\n\nSonraki ekranda listede Midnight\'ı bulun ve anahtarı açın.</string>
+    <string name="overlay_permission_page">Filtreyi diğer uygulamaların üzerinde gösterebilmek için Midnight\'ın izne ihtiyacı var.\n\nSonraki ekranda anahtarı açın.</string>
+    <string name="got_it">Anladım</string>
 </resources>

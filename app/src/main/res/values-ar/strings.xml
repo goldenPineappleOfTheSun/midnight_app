@@ -27,4 +27,10 @@
     <string name="background_hint">على بعض الأجهزة، يحتاج Midnight إلى إذن التشغيل في الخلفية لاستعادة المؤقت بعد إعادة تشغيل الهاتف.\n\nفعّل هذا الإذن من إعدادات التطبيق في هاتفك.</string>
     <string name="ok">حسنًا</string>
     <string name="cancel">إلغاء</string>
+
+    <!-- Окно перед настройками "Поверх других приложений" -->
+    <string name="overlay_permission_title">السماح بالظهور فوق التطبيقات الأخرى</string>
+    <string name="overlay_permission_list">يحتاج Midnight إلى إذن لعرض الفلتر فوق التطبيقات الأخرى.\n\nفي الشاشة التالية، ابحث عن Midnight في القائمة وفعّل المفتاح.</string>
+    <string name="overlay_permission_page">يحتاج Midnight إلى إذن لعرض الفلتر فوق التطبيقات الأخرى.\n\nفي الشاشة التالية، فعّل المفتاح.</string>
+    <string name="got_it">فهمت</string>
 </resources>

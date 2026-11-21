@@ -31,4 +31,10 @@
     <string name="background_hint">On some devices, Midnight needs background startup permission to restore your timer after a restart.\n\nEnable it in your phone\'s app settings.</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+
+    <!-- Окно перед настройками "Поверх других приложений" -->
+    <string name="overlay_permission_title">Allow display over other apps</string>
+    <string name="overlay_permission_list">To show the filter on top of other apps, Midnight needs permission.\n\nOn the next screen, find Midnight in the list and turn on the switch.</string>
+    <string name="overlay_permission_page">To show the filter on top of other apps, Midnight needs permission.\n\nOn the next screen, turn on the switch.</string>
+    <string name="got_it">Got it</string>
 </resources>

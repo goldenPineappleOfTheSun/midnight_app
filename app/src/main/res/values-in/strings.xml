@@ -26,4 +26,10 @@
     <string name="background_hint">Di beberapa perangkat, Midnight memerlukan izin untuk dimulai di latar belakang agar timer dapat dipulihkan setelah ponsel dimulai ulang.\n\nAktifkan izin ini di setelan aplikasi ponsel Anda.</string>
     <string name="ok">Oke</string>
     <string name="cancel">Batal</string>
+
+    <!-- Окно перед настройками "Поверх других приложений" -->
+    <string name="overlay_permission_title">Izinkan tampil di atas aplikasi lain</string>
+    <string name="overlay_permission_list">Agar filter bisa tampil di atas aplikasi lain, Midnight memerlukan izin.\n\nDi layar berikutnya, cari Midnight dalam daftar lalu aktifkan tombolnya.</string>
+    <string name="overlay_permission_page">Agar filter bisa tampil di atas aplikasi lain, Midnight memerlukan izin.\n\nDi layar berikutnya, aktifkan tombolnya.</string>
+    <string name="got_it">Mengerti</string>
 </resources>

@@ -25,4 +25,10 @@
     <string name="background_hint">Sur certains appareils, Midnight a besoin de l\'autorisation de démarrage en arrière-plan pour rétablir votre minuteur après un redémarrage.\n\nActivez-la dans les paramètres de l\'application de votre téléphone.</string>
     <string name="ok">OK</string>
     <string name="cancel">Annuler</string>
+
+    <!-- Окно перед настройками "Поверх других приложений" -->
+    <string name="overlay_permission_title">Autoriser l\'affichage par-dessus les autres applications</string>
+    <string name="overlay_permission_list">Pour afficher le filtre par-dessus les autres applications, Midnight a besoin d\'une autorisation.\n\nSur l\'écran suivant, trouvez Midnight dans la liste et activez l\'interrupteur.</string>
+    <string name="overlay_permission_page">Pour afficher le filtre par-dessus les autres applications, Midnight a besoin d\'une autorisation.\n\nSur l\'écran suivant, activez l\'interrupteur.</string>
+    <string name="got_it">J\'ai compris</string>
 </resources>

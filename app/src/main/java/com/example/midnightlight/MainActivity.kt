@@ -56,6 +56,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 import androidx.compose.runtime.snapshotFlow
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.sample
 import kotlinx.coroutines.flow.debounce
@@ -71,7 +72,6 @@ import androidx.compose.ui.text.font.FontWeight
 
 
 import android.content.Intent
-import android.net.Uri
 import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
@@ -251,6 +251,96 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
     val errorStartFilter = stringResource(R.string.error_start_filter)
 
 
+    // Включает фильтр с текущими теплотой и затемнением.
+    // Разрешение на показ поверх приложений уже должно быть.
+    fun startFilter() {
+
+        // Создаём Intent — сообщение для сервиса.
+        val startIntent = Intent(
+            context,
+            NightFilterService::class.java
+        ).apply {
+
+            action = NightFilterService.ACTION_START
+
+            // Передаём текущие значения квадрата.
+            putExtra(NightFilterService.EXTRA_WARMTH, warmth)
+            putExtra(NightFilterService.EXTRA_DIMMING, dimming)
+        }
+
+        try {
+            // Запрашиваем запуск foreground service.
+            ContextCompat.startForegroundService(context, startIntent)
+
+        } catch (e: RuntimeException) {
+
+            // Здесь возможны ограничения фонового запуска
+            // и ошибки разрешений Android.
+            Log.e("NightFilter", "Failed to start filter", e)
+
+            // Показываем пользователю короткое сообщение.
+            Toast.makeText(
+                context,
+                errorStartFilter,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+
+    // --------------------------------------------------------
+    // РАЗРЕШЕНИЕ "ПОВЕРХ ДРУГИХ ПРИЛОЖЕНИЙ"
+    // --------------------------------------------------------
+
+    // Показывать ли окно с объяснением перед настройками.
+    var showPermissionDialog by rememberSaveable { mutableStateOf(false) }
+
+    // Пользователь ушёл в настройки, чтобы включить фильтр.
+    // Когда он вернётся с разрешением — включим фильтр сами.
+    var startAfterPermission by rememberSaveable { mutableStateOf(false) }
+
+    // Включить фильтр или, если разрешения нет, сначала объяснить.
+    fun startFilterOrAskPermission() {
+        if (Settings.canDrawOverlays(context)) {
+            startFilter()
+        } else {
+            showPermissionDialog = true
+        }
+    }
+
+    if (showPermissionDialog) {
+        OverlayPermissionDialog(
+            onConfirm = {
+                showPermissionDialog = false
+                startAfterPermission = true
+                openOverlaySettings(context)
+            },
+            onDismiss = { showPermissionDialog = false }
+        )
+    }
+
+    // Срабатывает при каждом возвращении в приложение.
+    val resume = AppLifecycle.resumeCount
+    LaunchedEffect(resume) {
+        if (!startAfterPermission) return@LaunchedEffect
+
+        // На некоторых версиях Android разрешение становится
+        // видно приложению не сразу, поэтому проверяем
+        // несколько раз в течение секунды.
+        repeat(5) {
+            if (Settings.canDrawOverlays(context)) {
+                startAfterPermission = false
+                if (!NightFilterService.isRunning) startFilter()
+                return@LaunchedEffect
+            }
+            delay(200L)
+        }
+
+        // Разрешение так и не выдали — больше не ждём.
+        startAfterPermission = false
+    }
+
+
     // LaunchedEffect запускает код при изменении
     // одного из перечисленных параметров.
     //
@@ -421,66 +511,9 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
 
                     } else {
 
-                        // Проверяем разрешение рисовать поверх приложений.
-                        if (!Settings.canDrawOverlays(context)) {
-
-                            // Если разрешения нет, открываем настройки.
-                            val permissionIntent = Intent(
-                                Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                                Uri.parse("package:${context.packageName}")
-                            )
-
-                            context.startActivity(permissionIntent)
-
-                        } else {
-
-                            // Создаём Intent — сообщение для сервиса.
-                            val startIntent = Intent(
-                                context,
-                                NightFilterService::class.java
-                            ).apply {
-
-                                action = NightFilterService.ACTION_START
-
-                                // Передаём текущие значения квадрата.
-                                putExtra(
-                                    NightFilterService.EXTRA_WARMTH,
-                                    warmth
-                                )
-
-                                putExtra(
-                                    NightFilterService.EXTRA_DIMMING,
-                                    dimming
-                                )
-                            }
-
-
-                            try {
-                                // Запрашиваем запуск foreground service.
-                                ContextCompat.startForegroundService(
-                                    context,
-                                    startIntent
-                                )
-
-                            } catch (e: RuntimeException) {
-
-                                // Здесь возможны ограничения фонового запуска
-                                // и ошибки разрешений Android.
-                                Log.e(
-                                    "NightFilter",
-                                    "Ошибка запуска сервиса",
-                                    e
-                                )
-
-                                // Показываем пользователю короткое сообщение.
-                                Toast.makeText(
-                                    context,
-                                    errorStartFilter,
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-
-                        }
+                        // Включаем фильтр. Если нет разрешения рисовать
+                        // поверх приложений — сначала окно с объяснением.
+                        startFilterOrAskPermission()
                     }
                 },
 
@@ -662,58 +695,9 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
                                     // при взаимодействии с квадратом.
                                     if (!NightFilterService.isRunning) {
 
-                                        // Проверяем разрешение на наложение.
-                                        if (!Settings.canDrawOverlays(context)) {
-
-                                            // Если разрешения нет — открываем настройки Android.
-                                            val permissionIntent = Intent(
-                                                Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                                                Uri.parse("package:${context.packageName}")
-                                            )
-
-                                            context.startActivity(permissionIntent)
-
-                                        } else {
-
-                                            // Создаём команду включения фильтра.
-                                            val startIntent = Intent(
-                                                context,
-                                                NightFilterService::class.java
-                                            ).apply {
-
-                                                action = NightFilterService.ACTION_START
-
-                                                // Используем только что выбранные параметры.
-                                                putExtra(
-                                                    NightFilterService.EXTRA_WARMTH,
-                                                    warmth
-                                                )
-
-                                                putExtra(
-                                                    NightFilterService.EXTRA_DIMMING,
-                                                    dimming
-                                                )
-                                            }
-
-                                            try {
-                                                ContextCompat.startForegroundService(
-                                                    context,
-                                                    startIntent
-                                                )
-                                            } catch (e: RuntimeException) {
-                                                Log.e(
-                                                    "NightFilter",
-                                                    "Failed to start filter",
-                                                    e
-                                                )
-
-                                                Toast.makeText(
-                                                    context,
-                                                    errorStartFilter,
-                                                    Toast.LENGTH_SHORT
-                                                ).show()
-                                            }
-                                        }
+                                        // Используем только что выбранные параметры.
+                                        // Без разрешения — окно с объяснением.
+                                        startFilterOrAskPermission()
                                     }
 
                                     // Продолжаем следить за пальцем,

@@ -28,4 +28,10 @@
     <string name="background_hint">במכשירים מסוימים, Midnight צריכה הרשאה לפעול ברקע כדי לשחזר את הטיימר אחרי הפעלה מחדש.\n\nאפשר להפעיל אותה בהגדרות האפליקציה בטלפון.</string>
     <string name="ok">אישור</string>
     <string name="cancel">ביטול</string>
+
+    <!-- Окно перед настройками "Поверх других приложений" -->
+    <string name="overlay_permission_title">הרשאה להופיע מעל אפליקציות אחרות</string>
+    <string name="overlay_permission_list">כדי להציג את המסנן מעל אפליקציות אחרות, Midnight צריכה הרשאה.\n\nבמסך הבא, יש למצוא את Midnight ברשימה ולהפעיל את המתג.</string>
+    <string name="overlay_permission_page">כדי להציג את המסנן מעל אפליקציות אחרות, Midnight צריכה הרשאה.\n\nבמסך הבא, יש להפעיל את המתג.</string>
+    <string name="got_it">הבנתי</string>
 </resources>

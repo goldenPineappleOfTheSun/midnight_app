@@ -25,4 +25,10 @@
     <string name="background_hint">Auf manchen Geräten braucht Midnight die Berechtigung zum Start im Hintergrund, um deinen Timer nach einem Neustart wiederherzustellen.\n\nAktiviere sie in den App-Einstellungen deines Telefons.</string>
     <string name="ok">OK</string>
     <string name="cancel">Abbrechen</string>
+
+    <!-- Окно перед настройками "Поверх других приложений" -->
+    <string name="overlay_permission_title">Über anderen Apps einblenden erlauben</string>
+    <string name="overlay_permission_list">Damit der Filter über anderen Apps angezeigt werden kann, braucht Midnight eine Berechtigung.\n\nSuche auf dem nächsten Bildschirm Midnight in der Liste und aktiviere den Schalter.</string>
+    <string name="overlay_permission_page">Damit der Filter über anderen Apps angezeigt werden kann, braucht Midnight eine Berechtigung.\n\nAktiviere auf dem nächsten Bildschirm den Schalter.</string>
+    <string name="got_it">Verstanden</string>
 </resources>
