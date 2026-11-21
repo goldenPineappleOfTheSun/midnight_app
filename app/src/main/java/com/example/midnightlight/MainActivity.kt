@@ -90,7 +90,7 @@ import androidx.core.content.res.ResourcesCompat
 
 // Activity — это компонент Android, управляющий экраном приложения.
 //
-// При запуске Midnight Light Android создаёт MainActivity
+// При запуске Midnight Android создаёт MainActivity
 // и вызывает метод onCreate().
 
 class MainActivity : ComponentActivity() {
@@ -342,7 +342,8 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
     // Квадрат
     // Показатели
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.TopCenter
     ) {
 
         // 1. Сначала рисуем фоновую картинку.
@@ -365,18 +366,11 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
 
         Column(
             modifier = Modifier
-
-                // Занимаем всё доступное пространство экрана.
-                .fillMaxSize()
-
-                // Не размещаем содержимое под статус-баром
-                // и системной панелью навигации.
+                .fillMaxHeight()
+                .widthIn(max = 448.dp) // Ограничиваем ширину на планшетах
+                .fillMaxWidth()
                 .systemBarsPadding()
-
-                // Внутренние отступы от краёв.
                 .padding(24.dp),
-
-            // Выравниваем элементы по центру горизонтально.
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
@@ -543,7 +537,7 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
                 text = "Filter settings",
                 fontFamily = MidnightFont,
                 fontSize = 20.sp,
-                color = Color.White
+                color = Color.Black
             )
 
             Spacer(modifier = Modifier.height(18.dp))
@@ -567,14 +561,18 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
             Canvas(
                 modifier = Modifier
 
-                    // Максимальная доступная ширина.
-                    .fillMaxWidth()
+                    // Квадрат получает только оставшееся по высоте место
+                    // (fill = false — не растягивается больше нужного).
+                    // Так на низких экранах он уменьшается, и кнопка
+                    // Timer внизу всегда остаётся видна.
+                    .weight(1f, fill = false)
 
                     // Ограничиваем размер на широких экранах.
                     .widthIn(max = 400.dp)
 
                     // Соотношение сторон 1:1.
-                    // То есть ширина равна высоте.
+                    // Сначала пробуем всю ширину; если по высоте
+                    // не помещается — берём сторону по высоте.
                     .aspectRatio(1f)
 
                     // Обрезаем содержимое Canvas по закруглённой форме.
@@ -841,7 +839,7 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
 
             // Занимаем свободное место, чтобы кнопка таймера
             // стояла внизу экрана.
-            Spacer(modifier = Modifier.weight(1f).heightIn(min = 30.dp))
+            Spacer(modifier = Modifier.height(40.dp))
 
 
             // ====================================================
@@ -872,6 +870,8 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
                     color = if (timerEnabled) orangeColor else Color.White
                 )
             }
+
+            Spacer(modifier = Modifier.height(20.dp))
         }
     }
 }
@@ -931,9 +931,9 @@ fun TitleWithMoon() {
 
     Row {
         Text(
-            text = "Midnight Light",
+            text = "Midnight",
             fontFamily = MidnightFont,
-            color = Color.White,
+            color = Color.Black,
             fontSize = titleSize,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.alignByBaseline()
@@ -945,7 +945,7 @@ fun TitleWithMoon() {
         Image(
             painter = painterResource(R.drawable.ic_moon),
             contentDescription = null,
-            colorFilter = ColorFilter.tint(Color.White),
+            colorFilter = ColorFilter.tint(Color(0xfff0a561)),
             modifier = Modifier
                 .size(iconSize)
                 // Низ иконки совпадает с базовой линией текста.

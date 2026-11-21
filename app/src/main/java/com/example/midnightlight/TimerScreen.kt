@@ -219,7 +219,7 @@ fun TimerScreen(onBack: () -> Unit) {
 
             if (enabled && !canOverlay) {
                 PermissionWarning(
-                    text = "Allow Midnight Light to display over other apps, " +
+                    text = "Allow Midnight to display over other apps, " +
                             "otherwise the filter can't be shown.",
                     button = "Open settings",
                     onClick = ::openOverlaySettings
@@ -232,6 +232,18 @@ fun TimerScreen(onBack: () -> Unit) {
                     onClick = ::openAlarmSettings
                 )
             }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Text(
+                text = "On some devices, Midnight needs background startup permission " +
+                        "to restore your timer after a restart.\n\n" +
+                        "Enable it in your phone's app settings.",
+                fontFamily = MidnightFont,
+                fontSize = 16.sp,
+                color = Color.LightGray,
+                textAlign = TextAlign.Center
+            )
         }
     }
 

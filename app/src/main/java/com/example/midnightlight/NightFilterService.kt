@@ -394,7 +394,7 @@ class NightFilterService : Service() {
         }
 
         return builder
-            .setContentTitle("Midnight Light")
+            .setContentTitle("Midnight")
             .setContentText("Night filter is on")
             .setSmallIcon(android.R.drawable.ic_menu_view)
             .setContentIntent(openPendingIntent)
