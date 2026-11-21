@@ -5,6 +5,9 @@ import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import android.text.format.DateFormat
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -19,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -116,7 +120,7 @@ fun TimerScreen(onBack: () -> Unit) {
                 contentPadding = PaddingValues(horizontal = 24.dp)
             ) {
                 Text(
-                    text = "←  Back",
+                    text = stringResource(R.string.back),
                     fontFamily = MidnightFont,
                     fontSize = 20.sp,
                     color = Color.White
@@ -126,7 +130,7 @@ fun TimerScreen(onBack: () -> Unit) {
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
-                text = "Timer",
+                text = stringResource(R.string.timer),
                 fontFamily = MidnightFont,
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
@@ -136,8 +140,7 @@ fun TimerScreen(onBack: () -> Unit) {
             Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = "The night filter turns on and off by itself, " +
-                        "even when the app is closed.",
+                text = stringResource(R.string.timer_description),
                 fontFamily = MidnightFont,
                 fontSize = 16.sp,
                 color = Color.LightGray,
@@ -151,7 +154,7 @@ fun TimerScreen(onBack: () -> Unit) {
             // ------------------------------------------------
 
             TimeButton(
-                label = "Start",
+                label = stringResource(R.string.timer_start),
                 time = formatTime(start, is24),
                 onClick = { editing = "start" }
             )
@@ -159,7 +162,7 @@ fun TimerScreen(onBack: () -> Unit) {
             Spacer(modifier = Modifier.height(16.dp))
 
             TimeButton(
-                label = "End",
+                label = stringResource(R.string.timer_end),
                 time = formatTime(end, is24),
                 onClick = { editing = "end" }
             )
@@ -167,7 +170,7 @@ fun TimerScreen(onBack: () -> Unit) {
             if (start == end) {
                 Spacer(modifier = Modifier.height(12.dp))
                 Text(
-                    text = "Start and end must be different.",
+                    text = stringResource(R.string.timer_same_time),
                     fontFamily = MidnightFont,
                     fontSize = 16.sp,
                     color = Orange,
@@ -206,7 +209,7 @@ fun TimerScreen(onBack: () -> Unit) {
                 )
             ) {
                 Text(
-                    text = if (enabled) "Timer on" else "Timer off",
+                    text = stringResource(if (enabled) R.string.timer_on else R.string.timer_off),
                     fontFamily = MidnightFont,
                     fontSize = 24.sp,
                     color = if (enabled) Color.Black else Color.White
@@ -219,16 +222,14 @@ fun TimerScreen(onBack: () -> Unit) {
 
             if (enabled && !canOverlay) {
                 PermissionWarning(
-                    text = "Allow Midnight to display over other apps, " +
-                            "otherwise the filter can't be shown.",
-                    button = "Open settings",
+                    text = stringResource(R.string.overlay_warning),
+                    button = stringResource(R.string.open_settings),
                     onClick = ::openOverlaySettings
                 )
             } else if (enabled && !canExact) {
                 PermissionWarning(
-                    text = "Allow \"Alarms & reminders\" so the timer can " +
-                            "turn the filter on while the app is closed.",
-                    button = "Open settings",
+                    text = stringResource(R.string.alarm_warning),
+                    button = stringResource(R.string.open_settings),
                     onClick = ::openAlarmSettings
                 )
             }
@@ -236,9 +237,7 @@ fun TimerScreen(onBack: () -> Unit) {
             Spacer(modifier = Modifier.height(20.dp))
 
             Text(
-                text = "On some devices, Midnight needs background startup permission " +
-                        "to restore your timer after a restart.\n\n" +
-                        "Enable it in your phone's app settings.",
+                text = stringResource(R.string.background_hint),
                 fontFamily = MidnightFont,
                 fontSize = 16.sp,
                 color = Color.LightGray,
@@ -360,7 +359,7 @@ private fun TimePickDialog(
                     onClick = { onConfirm(state.hour * 60 + state.minute) },
                     modifier = Modifier.heightIn(min = 56.dp)
                 ) {
-                    Text("OK", fontFamily = MidnightFont, fontSize = 20.sp)
+                    Text(stringResource(R.string.ok), fontFamily = MidnightFont, fontSize = 20.sp)
                 }
             },
             dismissButton = {
@@ -368,7 +367,7 @@ private fun TimePickDialog(
                     onClick = onDismiss,
                     modifier = Modifier.heightIn(min = 56.dp)
                 ) {
-                    Text("Cancel", fontFamily = MidnightFont, fontSize = 20.sp)
+                    Text(stringResource(R.string.cancel), fontFamily = MidnightFont, fontSize = 20.sp)
                 }
             },
             text = { TimePicker(state = state) }
@@ -377,14 +376,25 @@ private fun TimePickDialog(
 }
 
 
-// 1320 → "22:00" или "10:00 PM" в зависимости от настроек телефона.
+// 1320 → время по правилам телефона:
+// 24-часовой формат или 12-часовой (настройка телефона)
+// и написание по языку приложения.
+//
+// Например: "22:00" или "10:00 PM".
 fun formatTime(minutes: Int, is24: Boolean): String {
-    val h = minutes / 60
-    val m = minutes % 60
-    return if (is24) {
-        "%02d:%02d".format(h, m)
-    } else {
-        val h12 = if (h % 12 == 0) 12 else h % 12
-        "%d:%02d %s".format(h12, m, if (h < 12) "AM" else "PM")
+    val locale = Locale.getDefault()
+
+    // Android подбирает шаблон для языка:
+    // "Hm" — часы 0–23 и минуты, "hm" — часы 1–12, минуты и AM/PM.
+    val pattern = DateFormat.getBestDateTimePattern(
+        locale,
+        if (is24) "Hm" else "hm"
+    )
+
+    val calendar = Calendar.getInstance().apply {
+        set(Calendar.HOUR_OF_DAY, minutes / 60)
+        set(Calendar.MINUTE, minutes % 60)
     }
+
+    return SimpleDateFormat(pattern, locale).format(calendar.time)
 }

@@ -1,3 +1,34 @@
 <resources>
-    <string name="app_name">Midnight</string>
+    <string name="app_name" translatable="false">Midnight</string>
+
+    <!-- Главный экран -->
+    <string name="toggle_on">On</string>
+    <string name="toggle_off">Off</string>
+    <string name="filter_settings">Filter settings</string>
+    <string name="axis_neutral">Neutral</string>
+    <string name="axis_warm">Warm →</string>
+    <string name="timer">Timer</string>
+    <!-- Кнопка таймера с расписанием: "Timer · 22:00 – 06:00" -->
+    <string name="timer_with_range">Timer  ·  %1$s – %2$s</string>
+    <string name="error_start_filter">Could not start filter</string>
+
+    <!-- Уведомление -->
+    <string name="notification_channel">Night filter</string>
+    <string name="notification_text">Night filter is on</string>
+    <string name="notification_turn_off">Turn off</string>
+
+    <!-- Экран таймера -->
+    <string name="back">←  Back</string>
+    <string name="timer_description">The night filter turns on and off by itself, even when the app is closed.</string>
+    <string name="timer_start">Start</string>
+    <string name="timer_end">End</string>
+    <string name="timer_same_time">Start and end must be different.</string>
+    <string name="timer_on">Timer on</string>
+    <string name="timer_off">Timer off</string>
+    <string name="overlay_warning">Allow Midnight to display over other apps, otherwise the filter can\'t be shown.</string>
+    <string name="alarm_warning">Allow \"Alarms &amp; reminders\" so the timer can turn the filter on while the app is closed.</string>
+    <string name="open_settings">Open settings</string>
+    <string name="background_hint">On some devices, Midnight needs background startup permission to restore your timer after a restart.\n\nEnable it in your phone\'s app settings.</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 </resources>

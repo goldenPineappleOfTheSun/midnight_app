@@ -1,0 +1,28 @@
+<resources>
+    <string name="toggle_on">Вкл</string>
+    <string name="toggle_off">Выкл</string>
+    <string name="filter_settings">Настройки фильтра</string>
+    <string name="axis_neutral">Нейтральный</string>
+    <string name="axis_warm">Тёплый →</string>
+    <string name="timer">Таймер</string>
+    <string name="timer_with_range">Таймер  ·  %1$s – %2$s</string>
+    <string name="error_start_filter">Не удалось включить фильтр</string>
+
+    <string name="notification_channel">Ночной фильтр</string>
+    <string name="notification_text">Ночной фильтр включён</string>
+    <string name="notification_turn_off">Выключить</string>
+
+    <string name="back">←  Назад</string>
+    <string name="timer_description">Ночной фильтр включается и выключается сам, даже когда приложение закрыто.</string>
+    <string name="timer_start">Начало</string>
+    <string name="timer_end">Конец</string>
+    <string name="timer_same_time">Начало и конец должны отличаться.</string>
+    <string name="timer_on">Таймер включён</string>
+    <string name="timer_off">Таймер выключен</string>
+    <string name="overlay_warning">Разрешите Midnight показываться поверх других приложений, иначе фильтр не будет виден.</string>
+    <string name="alarm_warning">Разрешите «Будильники и напоминания», чтобы таймер мог включать фильтр, когда приложение закрыто.</string>
+    <string name="open_settings">Открыть настройки</string>
+    <string name="background_hint">На некоторых устройствах Midnight нужно разрешение на запуск в фоне, чтобы восстановить таймер после перезагрузки.\n\nВключите его в настройках приложения на телефоне.</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Отмена</string>
+</resources>

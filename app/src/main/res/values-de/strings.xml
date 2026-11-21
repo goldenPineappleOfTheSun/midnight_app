@@ -1,0 +1,28 @@
+<resources>
+    <string name="toggle_on">An</string>
+    <string name="toggle_off">Aus</string>
+    <string name="filter_settings">Filtereinstellungen</string>
+    <string name="axis_neutral">Neutral</string>
+    <string name="axis_warm">Warm →</string>
+    <string name="timer">Timer</string>
+    <string name="timer_with_range">Timer  ·  %1$s – %2$s</string>
+    <string name="error_start_filter">Filter konnte nicht gestartet werden</string>
+
+    <string name="notification_channel">Nachtfilter</string>
+    <string name="notification_text">Nachtfilter ist an</string>
+    <string name="notification_turn_off">Ausschalten</string>
+
+    <string name="back">←  Zurück</string>
+    <string name="timer_description">Der Nachtfilter schaltet sich automatisch ein und aus, auch wenn die App geschlossen ist.</string>
+    <string name="timer_start">Beginn</string>
+    <string name="timer_end">Ende</string>
+    <string name="timer_same_time">Beginn und Ende müssen sich unterscheiden.</string>
+    <string name="timer_on">Timer an</string>
+    <string name="timer_off">Timer aus</string>
+    <string name="overlay_warning">Erlaube Midnight, über anderen Apps angezeigt zu werden, sonst kann der Filter nicht eingeblendet werden.</string>
+    <string name="alarm_warning">Erlaube „Wecker und Erinnerungen“, damit der Timer den Filter auch bei geschlossener App einschalten kann.</string>
+    <string name="open_settings">Einstellungen öffnen</string>
+    <string name="background_hint">Auf manchen Geräten braucht Midnight die Berechtigung zum Start im Hintergrund, um deinen Timer nach einem Neustart wiederherzustellen.\n\nAktiviere sie in den App-Einstellungen deines Telefons.</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Abbrechen</string>
+</resources>

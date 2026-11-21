@@ -344,7 +344,7 @@ class NightFilterService : Service() {
 
             val channel = NotificationChannel(
                 CHANNEL_ID,
-                "Night Light",
+                getString(R.string.notification_channel),
                 NotificationManager.IMPORTANCE_LOW
             )
 
@@ -394,14 +394,14 @@ class NightFilterService : Service() {
         }
 
         return builder
-            .setContentTitle("Midnight")
-            .setContentText("Night filter is on")
+            .setContentTitle(getString(R.string.app_name))
+            .setContentText(getString(R.string.notification_text))
             .setSmallIcon(android.R.drawable.ic_menu_view)
             .setContentIntent(openPendingIntent)
             .setOngoing(true)
             .addAction(
                 android.R.drawable.ic_menu_close_clear_cancel,
-                "Turn off",
+                getString(R.string.notification_turn_off),
                 stopPendingIntent
             )
             .build()

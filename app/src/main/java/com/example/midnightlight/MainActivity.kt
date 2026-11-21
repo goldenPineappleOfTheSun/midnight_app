@@ -63,6 +63,7 @@ import kotlinx.coroutines.flow.debounce
 import androidx.compose.foundation.Image
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -241,6 +242,10 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
     val timerEnabled = remember { FilterPrefs.timerEnabled(context) }
     val timerStart = remember { FilterPrefs.timerStart(context) }
     val timerEnd = remember { FilterPrefs.timerEnd(context) }
+
+    // Текст ошибки для Toast берём заранее: внутри обработчиков
+    // нажатий stringResource вызывать нельзя.
+    val errorStartFilter = stringResource(R.string.error_start_filter)
 
 
     // LaunchedEffect запускает код при изменении
@@ -467,7 +472,7 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
                                 // Показываем пользователю короткое сообщение.
                                 Toast.makeText(
                                     context,
-                                    "Could not start filter",
+                                    errorStartFilter,
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
@@ -510,9 +515,9 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
 
                 Text(
                     text = if (enabled) {
-                        "On"
+                        stringResource(R.string.toggle_on)
                     } else {
-                        "Off"
+                        stringResource(R.string.toggle_off)
                     },
 
                     fontSize = 24.sp,
@@ -534,7 +539,7 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
             // ====================================================
 
             Text(
-                text = "Filter settings",
+                text = stringResource(R.string.filter_settings),
                 fontFamily = MidnightFont,
                 fontSize = 20.sp,
                 color = Color.Black
@@ -701,7 +706,7 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
 
                                                 Toast.makeText(
                                                     context,
-                                                    "Failed to start filter",
+                                                    errorStartFilter,
                                                     Toast.LENGTH_SHORT
                                                 ).show()
                                             }
@@ -839,13 +844,13 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
                     ) {
 
                         Text(
-                            text = "Neutral",
+                            text = stringResource(R.string.axis_neutral),
                             fontFamily = MidnightFont,
                             color = Color.LightGray
                         )
 
                         Text(
-                            text = "Warm →",
+                            text = stringResource(R.string.axis_warm),
                             fontFamily = MidnightFont,
                             color = orangeColor
                         )
@@ -879,10 +884,13 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
 
                 Text(
                     text = if (timerEnabled && timerStart != timerEnd) {
-                        "Timer  ·  ${formatTime(timerStart, is24)} – " +
-                                formatTime(timerEnd, is24)
+                        stringResource(
+                            R.string.timer_with_range,
+                            formatTime(timerStart, is24),
+                            formatTime(timerEnd, is24)
+                        )
                     } else {
-                        "Timer"
+                        stringResource(R.string.timer)
                     },
                     fontFamily = MidnightFont,
                     fontSize = 20.sp,
@@ -894,24 +902,25 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
     }
 }
 
-// Создаём семейство шрифтов для приложения.
+// Создаём семейства шрифтов для приложения.
 //
 // FontFamily объединяет разные начертания
-// одного шрифта в единую группу.
+// одного шрифта в единую группу. Все начертания указывают
+// на один файл, чтобы Android не рисовал "искусственный" жирный.
 
+// Шрифт интерфейса зависит от языка:
+// res/font/ui_font.xml    → Signika (английский, французский, немецкий);
+// res/font-ru/ui_font.xml → M PLUS Rounded 1c (в Signika нет кириллицы).
 val MidnightFont = FontFamily(
-    Font(
-        R.font.signika_regular,
-        FontWeight.Normal
-    ),
-    Font(
-        R.font.signika_regular,
-        FontWeight.Medium
-    ),
-    Font(
-        R.font.signika_regular,
-        FontWeight.Bold
-    )
+    Font(R.font.ui_font, FontWeight.Normal),
+    Font(R.font.ui_font, FontWeight.Medium),
+    Font(R.font.ui_font, FontWeight.Bold)
+)
+
+// Заголовок-логотип "Midnight" всегда пишем Signika.
+val TitleFont = FontFamily(
+    Font(R.font.signika_regular, FontWeight.Normal),
+    Font(R.font.signika_regular, FontWeight.Bold)
 )
 
 
@@ -950,7 +959,7 @@ fun TitleWithMoon() {
     Row {
         Text(
             text = "Midnight",
-            fontFamily = MidnightFont,
+            fontFamily = TitleFont,
             color = Color.Black,
             fontSize = titleSize,
             fontWeight = FontWeight.Bold,

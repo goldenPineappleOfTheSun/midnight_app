@@ -1,0 +1,28 @@
+<resources>
+    <string name="toggle_on">Activé</string>
+    <string name="toggle_off">Désactivé</string>
+    <string name="filter_settings">Réglages du filtre</string>
+    <string name="axis_neutral">Neutre</string>
+    <string name="axis_warm">Chaud →</string>
+    <string name="timer">Minuteur</string>
+    <string name="timer_with_range">Minuteur  ·  %1$s – %2$s</string>
+    <string name="error_start_filter">Impossible d\'activer le filtre</string>
+
+    <string name="notification_channel">Filtre de nuit</string>
+    <string name="notification_text">Le filtre de nuit est activé</string>
+    <string name="notification_turn_off">Désactiver</string>
+
+    <string name="back">←  Retour</string>
+    <string name="timer_description">Le filtre de nuit s\'active et se désactive tout seul, même lorsque l\'application est fermée.</string>
+    <string name="timer_start">Début</string>
+    <string name="timer_end">Fin</string>
+    <string name="timer_same_time">Le début et la fin doivent être différents.</string>
+    <string name="timer_on">Minuteur activé</string>
+    <string name="timer_off">Minuteur désactivé</string>
+    <string name="overlay_warning">Autorisez Midnight à s\'afficher par-dessus les autres applications, sinon le filtre ne peut pas être affiché.</string>
+    <string name="alarm_warning">Autorisez « Alarmes et rappels » pour que le minuteur puisse activer le filtre lorsque l\'application est fermée.</string>
+    <string name="open_settings">Ouvrir les paramètres</string>
+    <string name="background_hint">Sur certains appareils, Midnight a besoin de l\'autorisation de démarrage en arrière-plan pour rétablir votre minuteur après un redémarrage.\n\nActivez-la dans les paramètres de l\'application de votre téléphone.</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Annuler</string>
+</resources>
