@@ -381,7 +381,7 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
             TitleWithMoon()
 
             // Spacer — пустое пространство между элементами.
-            Spacer(modifier = Modifier.height(36.dp))
+            Spacer(modifier = Modifier.height(28.dp))
 
 
             // ====================================================
@@ -526,7 +526,7 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
             }
 
 
-            Spacer(modifier = Modifier.height(36.dp))
+            Spacer(modifier = Modifier.height(28.dp))
 
 
             // ====================================================
@@ -558,288 +558,307 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
             // В Compose координата Y растёт СВЕРХУ ВНИЗ.
             // Поэтому для затемнения мы переворачиваем значение.
 
-            Canvas(
+            // Квадрат и подписи занимают всё место между
+            // "Filter settings" и кнопкой Timer.
+            //
+            // На обычном телефоне (около 414×896 dp) квадрат
+            // во всю ширину, как кнопка On/Off. Лишняя высота
+            // уходит в промежуток над Timer, и Timer стоит внизу.
+            // На низких экранах квадрат уменьшается, чтобы Timer
+            // не уходил за край.
+            BoxWithConstraints(
                 modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth(),
+                contentAlignment = Alignment.TopCenter
+            ) {
 
-                    // Квадрат получает только оставшееся по высоте место
-                    // (fill = false — не растягивается больше нужного).
-                    // Так на низких экранах он уменьшается, и кнопка
-                    // Timer внизу всегда остаётся видна.
-                    .weight(1f, fill = false)
+                // Место под подписями: отступ 14.dp + строка текста.
+                val labelsHeight = 14.dp + 24.dp
 
-                    // Ограничиваем размер на широких экранах.
-                    .widthIn(max = 400.dp)
+                val side = minOf(
+                    maxWidth,
+                    400.dp,
+                    (maxHeight - labelsHeight).coerceAtLeast(0.dp)
+                )
 
-                    // Соотношение сторон 1:1.
-                    // Сначала пробуем всю ширину; если по высоте
-                    // не помещается — берём сторону по высоте.
-                    .aspectRatio(1f)
+                Column(modifier = Modifier.width(side)) {
 
-                    // Обрезаем содержимое Canvas по закруглённой форме.
-                    .clip(RoundedCornerShape(18.5.dp))
+                    Canvas(
+                        modifier = Modifier
 
-                    // pointerInput обрабатывает касания.
-                    .pointerInput(Unit) {
+                            // Квадрат: сторона рассчитана выше.
+                            .size(side)
 
-                        // Получаем размер Canvas в пикселях.
-                        //
-                        // Здесь size — размер области обработки касаний,
-                        // а не размер в dp.
+                            // Обрезаем содержимое Canvas по закруглённой форме.
+                            .clip(RoundedCornerShape(18.5.dp))
 
-                        awaitEachGesture {
+                            // pointerInput обрабатывает касания.
+                            .pointerInput(Unit) {
 
-                            // Ждём первого касания пальцем.
-                            val down = awaitFirstDown(
-                                requireUnconsumed = false
-                            )
-
-                            // Функция пересчитывает координаты касания
-                            // в значения теплоты и затемнения.
-                            //
-                            // position.x — горизонтальная координата.
-                            // position.y — вертикальная координата.
-
-                            fun updatePosition(position: Offset) {
-
-                                val width = size.width.toFloat()
-                                val height = size.height.toFloat()
-
-                                if (width <= 0f || height <= 0f) {
-                                    return
-                                }
-
-                                // Переводим X в диапазон от 0 до 1.
+                                // Получаем размер Canvas в пикселях.
                                 //
-                                // Например:
-                                // width = 300 пикселей
-                                // x = 150 пикселей
-                                //
-                                // warmth = 150 / 300 = 0.5
+                                // Здесь size — размер области обработки касаний,
+                                // а не размер в dp.
 
-                                warmth = (position.x / width)
-                                    .coerceIn(0f, 1f)
+                                awaitEachGesture {
 
-                                // Переводим Y в диапазон от 0 до 1.
-                                //
-                                // Сверху Y = 0, поэтому:
-                                // 1 - 0 = 1 (максимальное затемнение)
-                                //
-                                // Снизу Y = height:
-                                // 1 - 1 = 0 (нет затемнения)
-                                // Теперь значение растёт сверху вниз.
-                                dimming = (position.y / height)
-                                    .coerceIn(0f, 1f)
-                            }
-
-                            // Обрабатываем первое касание.
-                            updatePosition(down.position)
-
-
-                            // Если фильтр выключен, включаем его
-                            // при взаимодействии с квадратом.
-                            if (!NightFilterService.isRunning) {
-
-                                // Проверяем разрешение на наложение.
-                                if (!Settings.canDrawOverlays(context)) {
-
-                                    // Если разрешения нет — открываем настройки Android.
-                                    val permissionIntent = Intent(
-                                        Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                                        Uri.parse("package:${context.packageName}")
+                                    // Ждём первого касания пальцем.
+                                    val down = awaitFirstDown(
+                                        requireUnconsumed = false
                                     )
 
-                                    context.startActivity(permissionIntent)
+                                    // Функция пересчитывает координаты касания
+                                    // в значения теплоты и затемнения.
+                                    //
+                                    // position.x — горизонтальная координата.
+                                    // position.y — вертикальная координата.
 
-                                } else {
+                                    fun updatePosition(position: Offset) {
 
-                                    // Создаём команду включения фильтра.
-                                    val startIntent = Intent(
-                                        context,
-                                        NightFilterService::class.java
-                                    ).apply {
+                                        val width = size.width.toFloat()
+                                        val height = size.height.toFloat()
 
-                                        action = NightFilterService.ACTION_START
+                                        if (width <= 0f || height <= 0f) {
+                                            return
+                                        }
 
-                                        // Используем только что выбранные параметры.
-                                        putExtra(
-                                            NightFilterService.EXTRA_WARMTH,
-                                            warmth
-                                        )
+                                        // Переводим X в диапазон от 0 до 1.
+                                        //
+                                        // Например:
+                                        // width = 300 пикселей
+                                        // x = 150 пикселей
+                                        //
+                                        // warmth = 150 / 300 = 0.5
 
-                                        putExtra(
-                                            NightFilterService.EXTRA_DIMMING,
-                                            dimming
-                                        )
+                                        warmth = (position.x / width)
+                                            .coerceIn(0f, 1f)
+
+                                        // Переводим Y в диапазон от 0 до 1.
+                                        //
+                                        // Сверху Y = 0, поэтому:
+                                        // 1 - 0 = 1 (максимальное затемнение)
+                                        //
+                                        // Снизу Y = height:
+                                        // 1 - 1 = 0 (нет затемнения)
+                                        // Теперь значение растёт сверху вниз.
+                                        dimming = (position.y / height)
+                                            .coerceIn(0f, 1f)
                                     }
 
-                                    try {
-                                        ContextCompat.startForegroundService(
-                                            context,
-                                            startIntent
-                                        )
-                                    } catch (e: RuntimeException) {
-                                        Log.e(
-                                            "NightFilter",
-                                            "Failed to start filter",
-                                            e
-                                        )
+                                    // Обрабатываем первое касание.
+                                    updatePosition(down.position)
 
-                                        Toast.makeText(
-                                            context,
-                                            "Failed to start filter",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+
+                                    // Если фильтр выключен, включаем его
+                                    // при взаимодействии с квадратом.
+                                    if (!NightFilterService.isRunning) {
+
+                                        // Проверяем разрешение на наложение.
+                                        if (!Settings.canDrawOverlays(context)) {
+
+                                            // Если разрешения нет — открываем настройки Android.
+                                            val permissionIntent = Intent(
+                                                Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                                                Uri.parse("package:${context.packageName}")
+                                            )
+
+                                            context.startActivity(permissionIntent)
+
+                                        } else {
+
+                                            // Создаём команду включения фильтра.
+                                            val startIntent = Intent(
+                                                context,
+                                                NightFilterService::class.java
+                                            ).apply {
+
+                                                action = NightFilterService.ACTION_START
+
+                                                // Используем только что выбранные параметры.
+                                                putExtra(
+                                                    NightFilterService.EXTRA_WARMTH,
+                                                    warmth
+                                                )
+
+                                                putExtra(
+                                                    NightFilterService.EXTRA_DIMMING,
+                                                    dimming
+                                                )
+                                            }
+
+                                            try {
+                                                ContextCompat.startForegroundService(
+                                                    context,
+                                                    startIntent
+                                                )
+                                            } catch (e: RuntimeException) {
+                                                Log.e(
+                                                    "NightFilter",
+                                                    "Failed to start filter",
+                                                    e
+                                                )
+
+                                                Toast.makeText(
+                                                    context,
+                                                    "Failed to start filter",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                            }
+                                        }
+                                    }
+
+                                    // Продолжаем следить за пальцем,
+                                    // пока пользователь его не отпустит.
+
+                                    while (true) {
+
+                                        val event = awaitPointerEvent()
+
+                                        // Находим палец, который начал жест.
+                                        val change = event.changes
+                                            .firstOrNull {
+                                                it.id == down.id
+                                            } ?: break
+
+                                        // Если палец отпущен — заканчиваем.
+                                        if (!change.pressed) {
+                                            break
+                                        }
+
+                                        // Обновляем значения при движении.
+                                        updatePosition(change.position)
+
+                                        // Сообщаем Compose, что обработали
+                                        // это изменение координат.
+                                        change.consume()
                                     }
                                 }
                             }
+                    ) {
 
-                            // Продолжаем следить за пальцем,
-                            // пока пользователь его не отпустит.
+                        // =================================================
+                        // 8. РИСУЕМ КВАДРАТ
+                        // =================================================
 
-                            while (true) {
+                        // Первый градиент меняется по горизонтали.
+                        //
+                        // Слева — серо-синий цвет.
+                        // Справа — тёплый оранжевый.
 
-                                val event = awaitPointerEvent()
+                        drawRect(
+                            brush = Brush.horizontalGradient(
+                                colors = listOf(
+                                    Color(0xFF718298),
+                                    Color(0xFFFFAE62)
+                                )
+                            )
+                        )
 
-                                // Находим палец, который начал жест.
-                                val change = event.changes
-                                    .firstOrNull {
-                                        it.id == down.id
-                                    } ?: break
+                        // Второй градиент рисуется поверх первого.
+                        //
+                        // Верх — тёмный.
+                        // Низ — прозрачный.
+                        //
+                        // Это даёт визуальное представление затемнения.
 
-                                // Если палец отпущен — заканчиваем.
-                                if (!change.pressed) {
-                                    break
-                                }
+                        drawRect(
+                            brush = Brush.verticalGradient(
+                                colors = listOf(
+                                    Color.Transparent,
+                                    Color.Black.copy(alpha = 0.8f)
+                                )
+                            )
+                        )
 
-                                // Обновляем значения при движении.
-                                updatePosition(change.position)
 
-                                // Сообщаем Compose, что обработали
-                                // это изменение координат.
-                                change.consume()
-                            }
-                        }
+                        // =================================================
+                        // 9. ПОЗИЦИЯ ИНДИКАТОРА
+                        // =================================================
+
+                        // Переводим значения 0..1 обратно в пиксели.
+                        //
+                        // Например:
+                        // warmth = 0.5
+                        // width = 300
+                        // x = 150
+
+
+                        // Радиус внешнего кольца индикатора.
+                        // Добавляем 2.dp для учёта толщины обводки.
+                        val radius = 19.dp.toPx()
+
+                        // Не позволяем центру кольца подходить
+                        // слишком близко к границам квадрата.
+                        val indicatorX = (warmth * size.width)
+                            .coerceIn(radius, size.width - radius)
+
+                        val indicatorY = (dimming * size.height)
+                            .coerceIn(radius, size.height - radius)
+
+
+                        val indicatorPosition = Offset(
+                            x = indicatorX,
+                            y = indicatorY
+                        )
+
+                        // Рисуем внешнее белое кольцо индикатора.
+                        drawCircle(
+                            color = Color.White,
+                            radius = 17.dp.toPx(),
+                            center = indicatorPosition,
+                            style = Stroke(
+                                width = 3.dp.toPx()
+                            )
+                        )
+
+                        // Рисуем маленькую белую точку внутри кольца.
+                        drawCircle(
+                            color = Color.White,
+                            radius = 4.dp.toPx(),
+                            center = indicatorPosition
+                        )
                     }
-            ) {
 
-                // =================================================
-                // 8. РИСУЕМ КВАДРАТ
-                // =================================================
 
-                // Первый градиент меняется по горизонтали.
-                //
-                // Слева — серо-синий цвет.
-                // Справа — тёплый оранжевый.
+                    Spacer(modifier = Modifier.height(14.dp))
 
-                drawRect(
-                    brush = Brush.horizontalGradient(
-                        colors = listOf(
-                            Color(0xFF718298),
-                            Color(0xFFFFAE62)
+
+                    // ====================================================
+                    // 10. ПОДПИСИ ОСИ ТЕПЛОТЫ
+                    // ====================================================
+
+                    // Row размещает элементы горизонтально.
+                    //
+                    // SpaceBetween располагает первый элемент слева,
+                    // а второй — справа.
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+
+                        Text(
+                            text = "Neutral",
+                            fontFamily = MidnightFont,
+                            color = Color.LightGray
                         )
-                    )
-                )
 
-                // Второй градиент рисуется поверх первого.
-                //
-                // Верх — тёмный.
-                // Низ — прозрачный.
-                //
-                // Это даёт визуальное представление затемнения.
-
-                drawRect(
-                    brush = Brush.verticalGradient(
-                        colors = listOf(
-                            Color.Transparent,
-                            Color.Black.copy(alpha = 0.8f)
+                        Text(
+                            text = "Warm →",
+                            fontFamily = MidnightFont,
+                            color = orangeColor
                         )
-                    )
-                )
+                    }
 
 
-                // =================================================
-                // 9. ПОЗИЦИЯ ИНДИКАТОРА
-                // =================================================
+                } // Column квадрата
+            } // BoxWithConstraints
 
-                // Переводим значения 0..1 обратно в пиксели.
-                //
-                // Например:
-                // warmth = 0.5
-                // width = 300
-                // x = 150
-
-
-                // Радиус внешнего кольца индикатора.
-                // Добавляем 2.dp для учёта толщины обводки.
-                val radius = 19.dp.toPx()
-
-                // Не позволяем центру кольца подходить
-                // слишком близко к границам квадрата.
-                val indicatorX = (warmth * size.width)
-                    .coerceIn(radius, size.width - radius)
-
-                val indicatorY = (dimming * size.height)
-                    .coerceIn(radius, size.height - radius)
-
-
-                val indicatorPosition = Offset(
-                    x = indicatorX,
-                    y = indicatorY
-                )
-
-                // Рисуем внешнее белое кольцо индикатора.
-                drawCircle(
-                    color = Color.White,
-                    radius = 17.dp.toPx(),
-                    center = indicatorPosition,
-                    style = Stroke(
-                        width = 3.dp.toPx()
-                    )
-                )
-
-                // Рисуем маленькую белую точку внутри кольца.
-                drawCircle(
-                    color = Color.White,
-                    radius = 4.dp.toPx(),
-                    center = indicatorPosition
-                )
-            }
-
-
-            Spacer(modifier = Modifier.height(14.dp))
-
-
-            // ====================================================
-            // 10. ПОДПИСИ ОСИ ТЕПЛОТЫ
-            // ====================================================
-
-            // Row размещает элементы горизонтально.
-            //
-            // SpaceBetween располагает первый элемент слева,
-            // а второй — справа.
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-
-                Text(
-                    text = "Neutral",
-                    fontFamily = MidnightFont,
-                    color = Color.LightGray
-                )
-
-                Text(
-                    text = "Warm →",
-                    fontFamily = MidnightFont,
-                    color = orangeColor
-                )
-            }
-
-
-            // Занимаем свободное место, чтобы кнопка таймера
-            // стояла внизу экрана.
-            Spacer(modifier = Modifier.height(40.dp))
+            // Минимальный отступ над кнопкой таймера.
+            // Остальное свободное место уже забрал блок выше,
+            // поэтому кнопка стоит внизу экрана.
+            Spacer(modifier = Modifier.height(20.dp))
 
 
             // ====================================================
@@ -870,8 +889,7 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
                     color = if (timerEnabled) orangeColor else Color.White
                 )
             }
-
-            Spacer(modifier = Modifier.height(20.dp))
+            // Снизу отступ даёт padding(24.dp) у Column.
         }
     }
 }
