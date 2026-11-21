@@ -1,0 +1,30 @@
+<resources>
+    <!-- Письмо справа налево. В строках со стрелкой стрелка стоит
+         ПЕРВОЙ: при показе справа налево она окажется справа. -->
+    <string name="toggle_on">تشغيل</string>
+    <string name="toggle_off">إيقاف</string>
+    <string name="filter_settings">إعدادات الفلتر</string>
+    <string name="axis_neutral">محايد</string>
+    <string name="axis_warm">→ دافئ</string>
+    <string name="timer">المؤقت</string>
+    <string name="timer_with_range">المؤقت  ·  %1$s – %2$s</string>
+    <string name="error_start_filter">تعذّر تشغيل الفلتر</string>
+
+    <string name="notification_channel">الفلتر الليلي</string>
+    <string name="notification_text">الفلتر الليلي قيد التشغيل</string>
+    <string name="notification_turn_off">إيقاف</string>
+
+    <string name="back">→  رجوع</string>
+    <string name="timer_description">يعمل الفلتر الليلي ويتوقف تلقائيًا، حتى عندما يكون التطبيق مغلقًا.</string>
+    <string name="timer_start">البداية</string>
+    <string name="timer_end">النهاية</string>
+    <string name="timer_same_time">يجب أن يختلف وقت البداية عن وقت النهاية.</string>
+    <string name="timer_on">المؤقت مفعّل</string>
+    <string name="timer_off">المؤقت متوقف</string>
+    <string name="overlay_warning">اسمح لتطبيق Midnight بالظهور فوق التطبيقات الأخرى، وإلا فلن يظهر الفلتر.</string>
+    <string name="alarm_warning">اسمح بـ«المنبّهات والتذكيرات» حتى يتمكن المؤقت من تشغيل الفلتر عندما يكون التطبيق مغلقًا.</string>
+    <string name="open_settings">فتح الإعدادات</string>
+    <string name="background_hint">على بعض الأجهزة، يحتاج Midnight إلى إذن التشغيل في الخلفية لاستعادة المؤقت بعد إعادة تشغيل الهاتف.\n\nفعّل هذا الإذن من إعدادات التطبيق في هاتفك.</string>
+    <string name="ok">حسنًا</string>
+    <string name="cancel">إلغاء</string>
+</resources>

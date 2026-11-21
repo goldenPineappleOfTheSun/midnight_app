@@ -1,0 +1,28 @@
+<resources>
+    <string name="toggle_on">開</string>
+    <string name="toggle_off">關</string>
+    <string name="filter_settings">濾鏡設定</string>
+    <string name="axis_neutral">中性</string>
+    <string name="axis_warm">暖色 →</string>
+    <string name="timer">定時</string>
+    <string name="timer_with_range">定時  ·  %1$s – %2$s</string>
+    <string name="error_start_filter">無法開啟濾鏡</string>
+
+    <string name="notification_channel">夜間濾鏡</string>
+    <string name="notification_text">夜間濾鏡已開啟</string>
+    <string name="notification_turn_off">關閉</string>
+
+    <string name="back">←  返回</string>
+    <string name="timer_description">即使應用程式已關閉，夜間濾鏡也會自動開啟和關閉。</string>
+    <string name="timer_start">開始</string>
+    <string name="timer_end">結束</string>
+    <string name="timer_same_time">開始時間和結束時間不能相同。</string>
+    <string name="timer_on">定時已開啟</string>
+    <string name="timer_off">定時已關閉</string>
+    <string name="overlay_warning">請允許 Midnight 顯示在其他應用程式上層，否則無法顯示濾鏡。</string>
+    <string name="alarm_warning">請允許「鬧鐘與提醒」，讓定時功能在應用程式關閉時也能開啟濾鏡。</string>
+    <string name="open_settings">開啟設定</string>
+    <string name="background_hint">在部分裝置上，Midnight 需要背景啟動權限，才能在重新開機後恢復定時。\n\n請在手機的應用程式設定中開啟此權限。</string>
+    <string name="ok">確定</string>
+    <string name="cancel">取消</string>
+</resources>

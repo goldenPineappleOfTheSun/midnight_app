@@ -1,0 +1,29 @@
+<resources>
+    <!-- Индонезийский (в Android папка values-in). -->
+    <string name="toggle_on">Aktif</string>
+    <string name="toggle_off">Nonaktif</string>
+    <string name="filter_settings">Setelan filter</string>
+    <string name="axis_neutral">Netral</string>
+    <string name="axis_warm">Hangat →</string>
+    <string name="timer">Timer</string>
+    <string name="timer_with_range">Timer  ·  %1$s – %2$s</string>
+    <string name="error_start_filter">Tidak dapat mengaktifkan filter</string>
+
+    <string name="notification_channel">Filter malam</string>
+    <string name="notification_text">Filter malam aktif</string>
+    <string name="notification_turn_off">Matikan</string>
+
+    <string name="back">←  Kembali</string>
+    <string name="timer_description">Filter malam menyala dan mati sendiri, bahkan saat aplikasi ditutup.</string>
+    <string name="timer_start">Mulai</string>
+    <string name="timer_end">Selesai</string>
+    <string name="timer_same_time">Waktu mulai dan selesai harus berbeda.</string>
+    <string name="timer_on">Timer aktif</string>
+    <string name="timer_off">Timer nonaktif</string>
+    <string name="overlay_warning">Izinkan Midnight tampil di atas aplikasi lain. Jika tidak, filter tidak dapat ditampilkan.</string>
+    <string name="alarm_warning">Izinkan \"Alarm &amp; pengingat\" agar timer dapat menyalakan filter saat aplikasi ditutup.</string>
+    <string name="open_settings">Buka setelan</string>
+    <string name="background_hint">Di beberapa perangkat, Midnight memerlukan izin untuk dimulai di latar belakang agar timer dapat dipulihkan setelah ponsel dimulai ulang.\n\nAktifkan izin ini di setelan aplikasi ponsel Anda.</string>
+    <string name="ok">Oke</string>
+    <string name="cancel">Batal</string>
+</resources>

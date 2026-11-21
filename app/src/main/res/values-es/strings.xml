@@ -1,0 +1,28 @@
+<resources>
+    <string name="toggle_on">Activado</string>
+    <string name="toggle_off">Desactivado</string>
+    <string name="filter_settings">Ajustes del filtro</string>
+    <string name="axis_neutral">Neutro</string>
+    <string name="axis_warm">Cálido →</string>
+    <string name="timer">Temporizador</string>
+    <string name="timer_with_range">Temporizador  ·  %1$s – %2$s</string>
+    <string name="error_start_filter">No se pudo activar el filtro</string>
+
+    <string name="notification_channel">Filtro nocturno</string>
+    <string name="notification_text">El filtro nocturno está activado</string>
+    <string name="notification_turn_off">Desactivar</string>
+
+    <string name="back">←  Atrás</string>
+    <string name="timer_description">El filtro nocturno se activa y se desactiva solo, incluso con la aplicación cerrada.</string>
+    <string name="timer_start">Inicio</string>
+    <string name="timer_end">Fin</string>
+    <string name="timer_same_time">El inicio y el fin deben ser distintos.</string>
+    <string name="timer_on">Temporizador activado</string>
+    <string name="timer_off">Temporizador desactivado</string>
+    <string name="overlay_warning">Permite que Midnight se muestre sobre otras aplicaciones; si no, el filtro no se podrá mostrar.</string>
+    <string name="alarm_warning">Permite \"Alarmas y recordatorios\" para que el temporizador pueda activar el filtro con la aplicación cerrada.</string>
+    <string name="open_settings">Abrir ajustes</string>
+    <string name="background_hint">En algunos dispositivos, Midnight necesita permiso para iniciarse en segundo plano y así restaurar el temporizador después de reiniciar el teléfono.\n\nActívalo en los ajustes de la aplicación de tu teléfono.</string>
+    <string name="ok">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+</resources>

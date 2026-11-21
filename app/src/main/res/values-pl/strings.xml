@@ -1,0 +1,28 @@
+<resources>
+    <string name="toggle_on">Wł.</string>
+    <string name="toggle_off">Wył.</string>
+    <string name="filter_settings">Ustawienia filtra</string>
+    <string name="axis_neutral">Neutralny</string>
+    <string name="axis_warm">Ciepły →</string>
+    <string name="timer">Harmonogram</string>
+    <string name="timer_with_range">Harmonogram  ·  %1$s – %2$s</string>
+    <string name="error_start_filter">Nie udało się włączyć filtra</string>
+
+    <string name="notification_channel">Filtr nocny</string>
+    <string name="notification_text">Filtr nocny jest włączony</string>
+    <string name="notification_turn_off">Wyłącz</string>
+
+    <string name="back">←  Wstecz</string>
+    <string name="timer_description">Filtr nocny włącza się i wyłącza sam, nawet gdy aplikacja jest zamknięta.</string>
+    <string name="timer_start">Początek</string>
+    <string name="timer_end">Koniec</string>
+    <string name="timer_same_time">Początek i koniec muszą się różnić.</string>
+    <string name="timer_on">Harmonogram włączony</string>
+    <string name="timer_off">Harmonogram wyłączony</string>
+    <string name="overlay_warning">Zezwól aplikacji Midnight na wyświetlanie nad innymi aplikacjami, inaczej filtr nie będzie widoczny.</string>
+    <string name="alarm_warning">Zezwól na „Alarmy i przypomnienia”, aby harmonogram mógł włączać filtr, gdy aplikacja jest zamknięta.</string>
+    <string name="open_settings">Otwórz ustawienia</string>
+    <string name="background_hint">Na niektórych urządzeniach Midnight potrzebuje uprawnienia do uruchamiania w tle, aby przywrócić harmonogram po ponownym uruchomieniu telefonu.\n\nWłącz je w ustawieniach aplikacji w telefonie.</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Anuluj</string>
+</resources>

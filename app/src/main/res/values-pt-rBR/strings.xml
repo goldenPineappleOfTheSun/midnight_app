@@ -1,0 +1,28 @@
+<resources>
+    <string name="toggle_on">Ligado</string>
+    <string name="toggle_off">Desligado</string>
+    <string name="filter_settings">Configurações do filtro</string>
+    <string name="axis_neutral">Neutro</string>
+    <string name="axis_warm">Quente →</string>
+    <string name="timer">Timer</string>
+    <string name="timer_with_range">Timer  ·  %1$s – %2$s</string>
+    <string name="error_start_filter">Não foi possível ativar o filtro</string>
+
+    <string name="notification_channel">Filtro noturno</string>
+    <string name="notification_text">Filtro noturno ativado</string>
+    <string name="notification_turn_off">Desativar</string>
+
+    <string name="back">←  Voltar</string>
+    <string name="timer_description">O filtro noturno liga e desliga sozinho, mesmo com o app fechado.</string>
+    <string name="timer_start">Início</string>
+    <string name="timer_end">Fim</string>
+    <string name="timer_same_time">O início e o fim precisam ser diferentes.</string>
+    <string name="timer_on">Timer ligado</string>
+    <string name="timer_off">Timer desligado</string>
+    <string name="overlay_warning">Permita que o Midnight seja exibido sobre outros apps. Caso contrário, o filtro não poderá ser mostrado.</string>
+    <string name="alarm_warning">Permita \"Alarmes e lembretes\" para que o timer possa ligar o filtro com o app fechado.</string>
+    <string name="open_settings">Abrir configurações</string>
+    <string name="background_hint">Em alguns aparelhos, o Midnight precisa de permissão para iniciar em segundo plano e restaurar o timer depois que o celular é reiniciado.\n\nAtive essa permissão nas configurações do app no seu celular.</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancelar</string>
+</resources>

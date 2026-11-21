@@ -1,0 +1,28 @@
+<resources>
+    <string name="toggle_on">オン</string>
+    <string name="toggle_off">オフ</string>
+    <string name="filter_settings">フィルター設定</string>
+    <string name="axis_neutral">ニュートラル</string>
+    <string name="axis_warm">暖色 →</string>
+    <string name="timer">タイマー</string>
+    <string name="timer_with_range">タイマー  ·  %1$s – %2$s</string>
+    <string name="error_start_filter">フィルターをオンにできませんでした</string>
+
+    <string name="notification_channel">ナイトフィルター</string>
+    <string name="notification_text">ナイトフィルターはオンです</string>
+    <string name="notification_turn_off">オフにする</string>
+
+    <string name="back">←  戻る</string>
+    <string name="timer_description">アプリを閉じていても、ナイトフィルターが自動でオン・オフします。</string>
+    <string name="timer_start">開始</string>
+    <string name="timer_end">終了</string>
+    <string name="timer_same_time">開始と終了には別の時刻を設定してください。</string>
+    <string name="timer_on">タイマー オン</string>
+    <string name="timer_off">タイマー オフ</string>
+    <string name="overlay_warning">Midnight に「他のアプリの上に重ねて表示」を許可してください。許可しないとフィルターを表示できません。</string>
+    <string name="alarm_warning">「アラームとリマインダー」を許可すると、アプリを閉じていてもタイマーでフィルターをオンにできます。</string>
+    <string name="open_settings">設定を開く</string>
+    <string name="background_hint">一部の端末では、再起動後にタイマーを復元するために、Midnight のバックグラウンド起動の許可が必要です。\n\nスマートフォンのアプリ設定で有効にしてください。</string>
+    <string name="ok">OK</string>
+    <string name="cancel">キャンセル</string>
+</resources>

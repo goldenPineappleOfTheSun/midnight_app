@@ -1,0 +1,28 @@
+<resources>
+    <string name="toggle_on">켜짐</string>
+    <string name="toggle_off">꺼짐</string>
+    <string name="filter_settings">필터 설정</string>
+    <string name="axis_neutral">중립</string>
+    <string name="axis_warm">따뜻하게 →</string>
+    <string name="timer">타이머</string>
+    <string name="timer_with_range">타이머  ·  %1$s – %2$s</string>
+    <string name="error_start_filter">필터를 켤 수 없습니다</string>
+
+    <string name="notification_channel">야간 필터</string>
+    <string name="notification_text">야간 필터가 켜져 있습니다</string>
+    <string name="notification_turn_off">끄기</string>
+
+    <string name="back">←  뒤로</string>
+    <string name="timer_description">앱이 닫혀 있어도 야간 필터가 자동으로 켜지고 꺼집니다.</string>
+    <string name="timer_start">시작</string>
+    <string name="timer_end">종료</string>
+    <string name="timer_same_time">시작 시간과 종료 시간은 달라야 합니다.</string>
+    <string name="timer_on">타이머 켜짐</string>
+    <string name="timer_off">타이머 꺼짐</string>
+    <string name="overlay_warning">Midnight가 다른 앱 위에 표시되도록 허용해 주세요. 허용하지 않으면 필터를 표시할 수 없습니다.</string>
+    <string name="alarm_warning">\'알람 및 리마인더\'를 허용하면 앱이 닫혀 있어도 타이머가 필터를 켤 수 있습니다.</string>
+    <string name="open_settings">설정 열기</string>
+    <string name="background_hint">일부 기기에서는 재시작 후 타이머를 복원하려면 Midnight에 백그라운드 실행 권한이 필요합니다.\n\n휴대전화의 앱 설정에서 허용해 주세요.</string>
+    <string name="ok">확인</string>
+    <string name="cancel">취소</string>
+</resources>

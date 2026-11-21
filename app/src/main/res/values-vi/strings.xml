@@ -1,0 +1,28 @@
+<resources>
+    <string name="toggle_on">Bật</string>
+    <string name="toggle_off">Tắt</string>
+    <string name="filter_settings">Cài đặt bộ lọc</string>
+    <string name="axis_neutral">Trung tính</string>
+    <string name="axis_warm">Ấm →</string>
+    <string name="timer">Hẹn giờ</string>
+    <string name="timer_with_range">Hẹn giờ  ·  %1$s – %2$s</string>
+    <string name="error_start_filter">Không thể bật bộ lọc</string>
+
+    <string name="notification_channel">Bộ lọc ban đêm</string>
+    <string name="notification_text">Bộ lọc ban đêm đang bật</string>
+    <string name="notification_turn_off">Tắt</string>
+
+    <string name="back">←  Quay lại</string>
+    <string name="timer_description">Bộ lọc ban đêm tự bật và tắt, ngay cả khi ứng dụng đã đóng.</string>
+    <string name="timer_start">Bắt đầu</string>
+    <string name="timer_end">Kết thúc</string>
+    <string name="timer_same_time">Thời gian bắt đầu và kết thúc phải khác nhau.</string>
+    <string name="timer_on">Hẹn giờ đang bật</string>
+    <string name="timer_off">Hẹn giờ đang tắt</string>
+    <string name="overlay_warning">Hãy cho phép Midnight hiển thị trên các ứng dụng khác, nếu không bộ lọc sẽ không hiển thị được.</string>
+    <string name="alarm_warning">Hãy cho phép \"Chuông báo và lời nhắc\" để hẹn giờ có thể bật bộ lọc khi ứng dụng đã đóng.</string>
+    <string name="open_settings">Mở cài đặt</string>
+    <string name="background_hint">Trên một số thiết bị, Midnight cần quyền khởi động trong nền để khôi phục hẹn giờ sau khi điện thoại khởi động lại.\n\nHãy bật quyền này trong phần cài đặt ứng dụng trên điện thoại.</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Hủy</string>
+</resources>

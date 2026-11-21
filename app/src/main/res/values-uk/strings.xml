@@ -1,0 +1,28 @@
+<resources>
+    <string name="toggle_on">Увімк.</string>
+    <string name="toggle_off">Вимк.</string>
+    <string name="filter_settings">Налаштування фільтра</string>
+    <string name="axis_neutral">Нейтральний</string>
+    <string name="axis_warm">Теплий →</string>
+    <string name="timer">Таймер</string>
+    <string name="timer_with_range">Таймер  ·  %1$s – %2$s</string>
+    <string name="error_start_filter">Не вдалося увімкнути фільтр</string>
+
+    <string name="notification_channel">Нічний фільтр</string>
+    <string name="notification_text">Нічний фільтр увімкнено</string>
+    <string name="notification_turn_off">Вимкнути</string>
+
+    <string name="back">←  Назад</string>
+    <string name="timer_description">Нічний фільтр вмикається і вимикається сам, навіть коли застосунок закрито.</string>
+    <string name="timer_start">Початок</string>
+    <string name="timer_end">Кінець</string>
+    <string name="timer_same_time">Початок і кінець мають відрізнятися.</string>
+    <string name="timer_on">Таймер увімкнено</string>
+    <string name="timer_off">Таймер вимкнено</string>
+    <string name="overlay_warning">Дозвольте Midnight показуватися поверх інших застосунків, інакше фільтр не буде видно.</string>
+    <string name="alarm_warning">Дозвольте «Будильники й нагадування», щоб таймер міг вмикати фільтр, коли застосунок закрито.</string>
+    <string name="open_settings">Відкрити налаштування</string>
+    <string name="background_hint">На деяких пристроях Midnight потрібен дозвіл на запуск у фоні, щоб відновити таймер після перезавантаження.\n\nУвімкніть його в налаштуваннях застосунку на телефоні.</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Скасувати</string>
+</resources>

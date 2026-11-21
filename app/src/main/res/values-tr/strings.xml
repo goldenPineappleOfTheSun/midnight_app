@@ -1,0 +1,28 @@
+<resources>
+    <string name="toggle_on">Açık</string>
+    <string name="toggle_off">Kapalı</string>
+    <string name="filter_settings">Filtre ayarları</string>
+    <string name="axis_neutral">Nötr</string>
+    <string name="axis_warm">Sıcak →</string>
+    <string name="timer">Zamanlayıcı</string>
+    <string name="timer_with_range">Zamanlayıcı  ·  %1$s – %2$s</string>
+    <string name="error_start_filter">Filtre açılamadı</string>
+
+    <string name="notification_channel">Gece filtresi</string>
+    <string name="notification_text">Gece filtresi açık</string>
+    <string name="notification_turn_off">Kapat</string>
+
+    <string name="back">←  Geri</string>
+    <string name="timer_description">Gece filtresi, uygulama kapalıyken bile kendiliğinden açılıp kapanır.</string>
+    <string name="timer_start">Başlangıç</string>
+    <string name="timer_end">Bitiş</string>
+    <string name="timer_same_time">Başlangıç ve bitiş saati farklı olmalıdır.</string>
+    <string name="timer_on">Zamanlayıcı açık</string>
+    <string name="timer_off">Zamanlayıcı kapalı</string>
+    <string name="overlay_warning">Midnight\'ın diğer uygulamaların üzerinde gösterilmesine izin verin, aksi halde filtre gösterilemez.</string>
+    <string name="alarm_warning">Uygulama kapalıyken zamanlayıcının filtreyi açabilmesi için \"Alarmlar ve hatırlatıcılar\" iznini verin.</string>
+    <string name="open_settings">Ayarları aç</string>
+    <string name="background_hint">Bazı cihazlarda Midnight\'ın, telefon yeniden başlatıldıktan sonra zamanlayıcıyı geri yükleyebilmesi için arka planda başlatma iznine ihtiyacı vardır.\n\nBu izni telefonunuzun uygulama ayarlarından açın.</string>
+    <string name="ok">Tamam</string>
+    <string name="cancel">İptal</string>
+</resources>

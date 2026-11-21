@@ -80,6 +80,9 @@ import androidx.compose.ui.graphics.lerp
 import androidx.core.content.ContextCompat
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.core.content.res.ResourcesCompat
 
@@ -837,23 +840,31 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
                     //
                     // SpaceBetween располагает первый элемент слева,
                     // а второй — справа.
+                    //
+                    // Квадрат не зеркалится в арабском и иврите
+                    // (тёплый край всегда справа), поэтому и подписи
+                    // принудительно раскладываем слева направо.
 
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
+                    CompositionLocalProvider(
+                        LocalLayoutDirection provides LayoutDirection.Ltr
                     ) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
 
-                        Text(
-                            text = stringResource(R.string.axis_neutral),
-                            fontFamily = MidnightFont,
-                            color = Color.LightGray
-                        )
+                            Text(
+                                text = stringResource(R.string.axis_neutral),
+                                fontFamily = MidnightFont,
+                                color = Color.LightGray
+                            )
 
-                        Text(
-                            text = stringResource(R.string.axis_warm),
-                            fontFamily = MidnightFont,
-                            color = orangeColor
-                        )
+                            Text(
+                                text = stringResource(R.string.axis_warm),
+                                fontFamily = MidnightFont,
+                                color = orangeColor
+                            )
+                        }
                     }
 
 
@@ -893,8 +904,16 @@ fun NightLightScreen(onOpenTimer: () -> Unit) {
                         stringResource(R.string.timer)
                     },
                     fontFamily = MidnightFont,
-                    fontSize = 20.sp,
-                    color = if (timerEnabled) orangeColor else Color.White
+                    color = if (timerEnabled) orangeColor else Color.White,
+
+                    // В некоторых языках надпись длинная
+                    // ("Temporizador · 10:00 p. m. – 6:00 a. m.").
+                    // Тогда шрифт уменьшается, чтобы влезть в одну строку.
+                    maxLines = 1,
+                    autoSize = TextAutoSize.StepBased(
+                        minFontSize = 13.sp,
+                        maxFontSize = 20.sp
+                    )
                 )
             }
             // Снизу отступ даёт padding(24.dp) у Column.
@@ -956,27 +975,33 @@ fun TitleWithMoon() {
     // Иконка на 10% ниже заглавных букв, низ по-прежнему на базовой линии.
     val iconSize = capHeight * 0.9f
 
-    Row {
-        Text(
-            text = "Midnight",
-            fontFamily = TitleFont,
-            color = Color.Black,
-            fontSize = titleSize,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.alignByBaseline()
-        )
+    // Логотип всегда слева направо: "Midnight" и луна справа,
+    // даже в арабском и иврите.
+    CompositionLocalProvider(
+        LocalLayoutDirection provides LayoutDirection.Ltr
+    ) {
+        Row {
+            Text(
+                text = "Midnight",
+                fontFamily = TitleFont,
+                color = Color.Black,
+                fontSize = titleSize,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.alignByBaseline()
+            )
 
-        // Отступ между текстом и иконкой — примерно ширина пробела.
-        Spacer(modifier = Modifier.width(capHeight * 0.35f))
+            // Отступ между текстом и иконкой — примерно ширина пробела.
+            Spacer(modifier = Modifier.width(capHeight * 0.35f))
 
-        Image(
-            painter = painterResource(R.drawable.ic_moon),
-            contentDescription = null,
-            colorFilter = ColorFilter.tint(Color(0xfff0a561)),
-            modifier = Modifier
-                .size(iconSize)
-                // Низ иконки совпадает с базовой линией текста.
-                .alignBy { it.measuredHeight }
-        )
+            Image(
+                painter = painterResource(R.drawable.ic_moon),
+                contentDescription = null,
+                colorFilter = ColorFilter.tint(Color(0xfff0a561)),
+                modifier = Modifier
+                    .size(iconSize)
+                    // Низ иконки совпадает с базовой линией текста.
+                    .alignBy { it.measuredHeight }
+            )
+        }
     }
 }

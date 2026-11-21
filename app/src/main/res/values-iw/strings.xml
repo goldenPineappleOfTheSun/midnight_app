@@ -1,0 +1,31 @@
+<resources>
+    <!-- Иврит (в Android папка values-iw). Письмо справа налево.
+         В строках со стрелкой стрелка стоит ПЕРВОЙ: при показе
+         справа налево она окажется справа. -->
+    <string name="toggle_on">פועל</string>
+    <string name="toggle_off">כבוי</string>
+    <string name="filter_settings">הגדרות המסנן</string>
+    <string name="axis_neutral">ניטרלי</string>
+    <string name="axis_warm">→ חם</string>
+    <string name="timer">טיימר</string>
+    <string name="timer_with_range">טיימר  ·  %1$s – %2$s</string>
+    <string name="error_start_filter">לא ניתן להפעיל את המסנן</string>
+
+    <string name="notification_channel">מסנן לילה</string>
+    <string name="notification_text">מסנן הלילה פועל</string>
+    <string name="notification_turn_off">כיבוי</string>
+
+    <string name="back">→  חזרה</string>
+    <string name="timer_description">מסנן הלילה נדלק ונכבה מעצמו, גם כשהאפליקציה סגורה.</string>
+    <string name="timer_start">התחלה</string>
+    <string name="timer_end">סיום</string>
+    <string name="timer_same_time">שעת ההתחלה ושעת הסיום חייבות להיות שונות.</string>
+    <string name="timer_on">הטיימר פועל</string>
+    <string name="timer_off">הטיימר כבוי</string>
+    <string name="overlay_warning">יש לאפשר ל-Midnight להופיע מעל אפליקציות אחרות, אחרת לא ניתן להציג את המסנן.</string>
+    <string name="alarm_warning">יש לאפשר \"שעונים מעוררים ותזכורות\" כדי שהטיימר יוכל להפעיל את המסנן כשהאפליקציה סגורה.</string>
+    <string name="open_settings">פתיחת ההגדרות</string>
+    <string name="background_hint">במכשירים מסוימים, Midnight צריכה הרשאה לפעול ברקע כדי לשחזר את הטיימר אחרי הפעלה מחדש.\n\nאפשר להפעיל אותה בהגדרות האפליקציה בטלפון.</string>
+    <string name="ok">אישור</string>
+    <string name="cancel">ביטול</string>
+</resources>

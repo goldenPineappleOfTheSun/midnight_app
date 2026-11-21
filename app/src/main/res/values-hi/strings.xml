@@ -1,0 +1,28 @@
+<resources>
+    <string name="toggle_on">चालू</string>
+    <string name="toggle_off">बंद</string>
+    <string name="filter_settings">फ़िल्टर सेटिंग</string>
+    <string name="axis_neutral">न्यूट्रल</string>
+    <string name="axis_warm">गर्म →</string>
+    <string name="timer">टाइमर</string>
+    <string name="timer_with_range">टाइमर  ·  %1$s – %2$s</string>
+    <string name="error_start_filter">फ़िल्टर चालू नहीं हो सका</string>
+
+    <string name="notification_channel">नाइट फ़िल्टर</string>
+    <string name="notification_text">नाइट फ़िल्टर चालू है</string>
+    <string name="notification_turn_off">बंद करें</string>
+
+    <string name="back">←  वापस</string>
+    <string name="timer_description">ऐप बंद होने पर भी नाइट फ़िल्टर अपने-आप चालू और बंद होता है।</string>
+    <string name="timer_start">शुरू</string>
+    <string name="timer_end">खत्म</string>
+    <string name="timer_same_time">शुरू और खत्म होने का समय अलग-अलग होना चाहिए।</string>
+    <string name="timer_on">टाइमर चालू</string>
+    <string name="timer_off">टाइमर बंद</string>
+    <string name="overlay_warning">Midnight को दूसरे ऐप्लिकेशन के ऊपर दिखने की अनुमति दें, नहीं तो फ़िल्टर नहीं दिखेगा।</string>
+    <string name="alarm_warning">\"अलार्म और रिमाइंडर\" की अनुमति दें, ताकि ऐप बंद होने पर भी टाइमर फ़िल्टर चालू कर सके।</string>
+    <string name="open_settings">सेटिंग खोलें</string>
+    <string name="background_hint">कुछ डिवाइस पर, फ़ोन रीस्टार्ट होने के बाद टाइमर वापस लाने के लिए Midnight को बैकग्राउंड में शुरू होने की अनुमति चाहिए।\n\nइसे अपने फ़ोन की ऐप सेटिंग में चालू करें।</string>
+    <string name="ok">ठीक है</string>
+    <string name="cancel">रद्द करें</string>
+</resources>

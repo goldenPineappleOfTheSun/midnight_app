@@ -1,0 +1,28 @@
+<resources>
+    <string name="toggle_on">Attivo</string>
+    <string name="toggle_off">Disattivo</string>
+    <string name="filter_settings">Impostazioni filtro</string>
+    <string name="axis_neutral">Neutro</string>
+    <string name="axis_warm">Caldo →</string>
+    <string name="timer">Timer</string>
+    <string name="timer_with_range">Timer  ·  %1$s – %2$s</string>
+    <string name="error_start_filter">Impossibile attivare il filtro</string>
+
+    <string name="notification_channel">Filtro notturno</string>
+    <string name="notification_text">Filtro notturno attivo</string>
+    <string name="notification_turn_off">Disattiva</string>
+
+    <string name="back">←  Indietro</string>
+    <string name="timer_description">Il filtro notturno si attiva e si disattiva da solo, anche quando l\'app è chiusa.</string>
+    <string name="timer_start">Inizio</string>
+    <string name="timer_end">Fine</string>
+    <string name="timer_same_time">Inizio e fine devono essere diversi.</string>
+    <string name="timer_on">Timer attivo</string>
+    <string name="timer_off">Timer disattivato</string>
+    <string name="overlay_warning">Consenti a Midnight di essere mostrata sopra le altre app, altrimenti il filtro non può essere visualizzato.</string>
+    <string name="alarm_warning">Consenti \"Sveglie e promemoria\" affinché il timer possa attivare il filtro quando l\'app è chiusa.</string>
+    <string name="open_settings">Apri impostazioni</string>
+    <string name="background_hint">Su alcuni dispositivi, Midnight ha bisogno dell\'autorizzazione all\'avvio in background per ripristinare il timer dopo un riavvio.\n\nAttivala nelle impostazioni dell\'app sul telefono.</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Annulla</string>
+</resources>
