@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Экран зафиксирован в портретной ориентации (screenOrientation
+         у MainActivity), из-за чего Google Play считает портретный экран
+         обязательным и скрывает приложение от части устройств
+         (планшеты, Chromebook, Android XR). Делаем это необязательным. -->
+    <uses-feature
+        android:name="android.hardware.screen.portrait"
+        android:required="false" />
+
     <!-- Разрешение рисовать поверх других приложений. -->
     <uses-permission
         android:name="android.permission.SYSTEM_ALERT_WINDOW" />

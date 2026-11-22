@@ -13,7 +13,7 @@ android {
         applicationId = "com.tairsaetov.midnightlight"
         minSdk = 24
         targetSdk = 37
-        versionCode = 8
+        versionCode = 10
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
